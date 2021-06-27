@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Modal, ModalHeader, ModalBody, Button, Col, Row, Label } from 'reactstrap';
 
-const required = (val) => val && val;
-
 class CommentForm extends Component {
     constructor(props) {
         super(props);
@@ -24,13 +22,13 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        alert("Your submission is: " + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
         return(
             <React.Fragment>
-                <Button outline onClick = {this.toggleModal}>
+                <Button outline className = "text-primary bg-light" onClick = {this.toggleModal}>
                     <span className = "fa fa-comments fa-lg"></span> Submit Comment
                 </Button>
 
@@ -39,24 +37,14 @@ class CommentForm extends Component {
                         Submit Comment
                     </ModalHeader>
                     <ModalBody>
-                        <LocalForm onSubmit = {(values) => this.handleSubmit(values)}>
+                        <LocalForm onSubmit = {this.handleSubmit}>
                             <Row className = "form-group">
-                                <Label htmlFor = "name" md = {12}>
+                                <Label htmlFor = "author" md = {12}>
                                     Your Name
                                 </Label>
                                 <Col md = {12}>
-                                    <Control.text model = ".name" className = "form-control"
-                                        name = "name" id = "name"
-                                        validators = {{
-                                            required
-                                        }}
-                                    />
-                                    <Errors className = "text-danger"
-                                        model = ".errorname"
-                                        show = "touched"
-                                        messages = {{
-                                            required: "Required"
-                                        }}
+                                    <Control.text model = ".author" className = "form-control"
+                                        name = "author" id = "author"
                                     />
                                 </Col>
                             </Row>
@@ -67,9 +55,6 @@ class CommentForm extends Component {
                                 <Col md = {12}>
                                     <Control.select model = ".rating" className = "form-control"
                                         name = "rating" id = "rating"
-                                        validators = {{
-                                            required
-                                        }}
                                     >
                                         <option>1</option>
                                         <option>2</option>
@@ -77,13 +62,6 @@ class CommentForm extends Component {
                                         <option>4</option>
                                         <option>5</option>
                                     </Control.select>
-                                    <Errors className = "text-danger"
-                                        model = ".author" 
-                                        show = "touched"
-                                        messages = {{
-                                            required: "Required"
-                                        }}
-                                    />
                                 </Col>
                             </Row>
                             <Row className = "form-group">
@@ -95,9 +73,6 @@ class CommentForm extends Component {
                                         id = "comment" name = "comment"
                                         rows = "6" 
                                         className = "form-control"
-                                        validators = {{
-                                            required
-                                        }}
                                     />
                                 </Col>
                             </Row>

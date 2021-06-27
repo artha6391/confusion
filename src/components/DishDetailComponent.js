@@ -32,7 +32,7 @@ import CommentForm from './CommentFormComponent';
                 <li key = {comment.id}>
                     <p>{comment.comment}</p>
                     <p>
-                        -- {comment.author} &nbsp {comment.date} 
+                        -- {comment.author}, {comment.date} 
                     </p>
                 </li>
             );

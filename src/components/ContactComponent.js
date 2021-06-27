@@ -147,7 +147,7 @@ class Contact extends Component {
                                     />
                                     <Errors 
                                         className = "text-danger"
-                                        model = ".telnum"
+                                        model = ".email"
                                         show = "touched"
                                         messages = {{
                                             required: "Required",
@@ -168,7 +168,7 @@ class Contact extends Component {
                                     </div>
                                 </Col>
                                 <Col md ={{size: 3, offset: 1}}>
-                                    <Control.select type=".contactType" name="contactType"
+                                    <Control.select model=".contactType" name="contactType"
                                         className = "form-control"
                                         >
                                         <option>Tel.</option>
@@ -179,7 +179,7 @@ class Contact extends Component {
                             <Row className = "form-group">
                                 <Label htmlFor="message" md={2}>Your Feedback</Label>
                                 <Col md={10}>
-                                    <Control.textarea type=".message" id="message" name="message"
+                                    <Control.textarea model=".message" id="message" name="message"
                                         rows="12"
                                         className = "form-control"
                                         />

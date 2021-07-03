@@ -83,7 +83,7 @@ class Header extends Component {
                         <div className = "row row-header">
                             <div className = "col-12 col-sm-6">
                                 <h1>Artha's Sample Projecto</h1>
-                                <p>Fuck you.</p>
+                                <p>This is my sample project for React</p>
                             </div>
                         </div>
                     </div>
